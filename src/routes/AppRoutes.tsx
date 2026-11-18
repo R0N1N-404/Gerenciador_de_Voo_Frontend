@@ -7,6 +7,13 @@ import ProtectedRoute from "./ProtectedRoute";
 import PilotoDashboard from "../pages/dashboard/PilotoDashboard/PilotoDashboard";
 import TorreDashboard from "../pages/dashboard/TorreDashboard/TorreDashboard";
 import PublicRoute from "./PublicRoute";
+import CreateRequest from "../pages/piloto/CreateRequisicao";
+import PilotoList from "../pages/piloto/PilotoList";
+import PilotoCreate from "../pages/piloto/pilotoCreate";
+import PilotoEdit from "../pages/piloto/editarPiloto";
+import AeronaveList from "../pages/aeronaves/AeronaveList";
+import AeronaveCreate from "../pages/aeronaves/AeronaveCreate";
+import AeronaveEdit from "../pages/aeronaves/AeronaveEdit";
 
 
 function AppRoutes(){
@@ -19,6 +26,15 @@ function AppRoutes(){
         </Route>
       </Route>
 
+      <Route
+          element={<ProtectedRoute tipoPermitido="PILOTO" />}
+        >
+          <Route
+            path="/requisicao/create"
+            element={<CreateRequest />}
+          />
+        </Route>
+
       <Route element={
         <ProtectedRoute tipoPermitido="TORRE">
         </ProtectedRoute>}>
@@ -26,6 +42,47 @@ function AppRoutes(){
         </Route>
       </Route>
 
+      <Route element={
+        <ProtectedRoute tipoPermitido="TORRE">
+        </ProtectedRoute>}>
+        <Route path="/pilotos" element={<PilotoList></PilotoList>}>
+        </Route>
+      </Route>
+
+        <Route element={
+        <ProtectedRoute tipoPermitido="TORRE">
+        </ProtectedRoute>}>
+        <Route path="/piloto/criar" element={<PilotoCreate></PilotoCreate>}>
+        </Route>
+      </Route>
+
+      <Route element={
+        <ProtectedRoute tipoPermitido="TORRE">
+        </ProtectedRoute>}>
+        <Route path="/aeronaves/" element={<AeronaveList></AeronaveList>}>
+        </Route>
+      </Route>
+
+       <Route element={
+        <ProtectedRoute tipoPermitido="TORRE">
+        </ProtectedRoute>}>
+        <Route path="/aeronave/criar" element={<AeronaveCreate></AeronaveCreate>}>
+        </Route>
+      </Route>
+
+       <Route element={
+        <ProtectedRoute tipoPermitido="TORRE">
+        </ProtectedRoute>}>
+        <Route path="/aeronave/editar/:id" element={<AeronaveEdit></AeronaveEdit>}>
+        </Route>
+      </Route>
+
+      <Route element={<ProtectedRoute tipoPermitido="TORRE" />}>
+    <Route
+      path="/piloto/editar/:id"
+      element={<PilotoEdit/>}
+    />
+  </Route>
 
       <Route path="/dashboard" element={<Dashboard />} />
       

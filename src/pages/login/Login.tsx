@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Plane, User, Lock, ArrowRight, ShieldCheck } from 'lucide-react';
+import { Plane, User, Lock, ArrowRight } from 'lucide-react';
 import { Login } from '../../services/login/Login';
 import { useNavigate } from "react-router-dom";
 
@@ -24,6 +24,7 @@ export default function LoginPage() {
         }
     } catch (error) {
         console.error(error);
+        alert(error.message);
     }
 };
 
@@ -42,12 +43,12 @@ export default function LoginPage() {
             <div className="p-2 bg-[#1e293b] rounded-lg border border-slate-700">
               <Plane className="w-8 h-8 text-cyan-400 rotate-45" />
             </div>
-            <h1 className="text-3xl font-bold tracking-tight text-white">
-              Airport<span className="text-cyan-400">COCKPIT</span>
+            <h1 className="text-2xl font-bold tracking-tight text-white">
+              Gerenciador de Voo <span className="text-cyan-400">2000</span>
             </h1>
           </div>
           <p className="text-sm text-slate-400 font-mono uppercase tracking-widest mt-2">
-            System Access
+            Acesso ao Sistema
           </p>
         </div>
 
@@ -61,9 +62,8 @@ export default function LoginPage() {
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
                 <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500"></span>
               </span>
-              <span className="text-xs text-emerald-400 font-medium">System Online</span>
+              <span className="text-xs text-emerald-400 font-medium">Sistema Online</span>
             </div>
-            <span className="text-xs text-slate-500 font-mono">UTC 07:45</span>
           </div>
 
           <form onSubmit={handleLogin} className="space-y-5">
@@ -71,7 +71,7 @@ export default function LoginPage() {
             {/* Campo Email */}
             <div>
               <label className="block text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">
-                Operational ID
+                Login
               </label>
               <div className="relative">
                 <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
@@ -91,7 +91,7 @@ export default function LoginPage() {
             {/* Campo Senha */}
             <div>
               <label className="block text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">
-                Access Code
+                Senha
               </label>
               <div className="relative">
                 <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
@@ -108,16 +108,7 @@ export default function LoginPage() {
               </div>
             </div>
 
-            {/* Opções Extras */}
-            <div className="flex items-center justify-between text-xs">
-              <label className="flex items-center text-slate-400 cursor-pointer hover:text-slate-300">
-                <input type="checkbox" className="mr-2 rounded border-slate-700 bg-[#0f172a] text-cyan-500 focus:ring-cyan-500 focus:ring-offset-0" />
-                Remember Device
-              </label>
-              <a href="#" className="text-cyan-400 hover:text-cyan-300 font-medium transition-colors">
-                Reset Access?
-              </a>
-            </div>
+            
 
             {/* Botão de Login */}
             <button
@@ -128,18 +119,9 @@ export default function LoginPage() {
               <ArrowRight className="w-4 h-4" />
             </button>
           </form>
-
-          {/* Rodapé do Card */}
-          <div className="mt-8 pt-6 border-t border-slate-700/50 flex items-center justify-center gap-2 text-xs text-slate-500">
-            <ShieldCheck className="w-4 h-4 text-slate-600" />
-            <span>Restricted Access • CAT III Certified</span>
-          </div>
         </div>
 
-        {/* Footer Global */}
-        <div className="mt-8 text-center text-xs text-slate-600 font-mono">
-          <p>© 2026 AirportCOCKPIT System v2.4.1</p>
-        </div>
+      
       </div>
     </div>
   );

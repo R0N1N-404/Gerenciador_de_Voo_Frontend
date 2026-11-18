@@ -20,8 +20,9 @@ export async function api<T>(
   });
 
   if (!response.ok) {
-    throw new Error(`Erro HTTP: ${response.status}`);
-  }
+  const erro = await response.json();
+  throw new Error(erro.mensagem || `Erro HTTP: ${response.status}`);
+}
 
   if (response.status === 204) {
     return undefined as T;

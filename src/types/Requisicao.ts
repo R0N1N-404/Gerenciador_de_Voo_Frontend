@@ -1,6 +1,6 @@
 export type TipoOperacao = 'POUSO' | 'DECOLAGEM';
-export type PrioridadeRequisicao = 'NORMAL' | 'ALTA' | 'EMERGENCIAL';
-export type StatusRequisicao = 'PENDENTE' | 'AUTORIZADO' | 'NEGADO' | 'CONCLUIDO';
+export type PrioridadeRequisicao = 'NORMAL' | 'EMERGENCIA';
+export type StatusRequisicao = 'PENDENTE' | 'AUTORIZADA' | 'RECUSADA' | 'CONCLUIDA' | 'CANCELADA';
 
 export interface RequisicaoResponse {
   id: number;
@@ -9,5 +9,12 @@ export interface RequisicaoResponse {
   prioridade: PrioridadeRequisicao;
   observacao: string;
   status: StatusRequisicao;
-  dataHoraSolicitacao: string;
+  solicitadaEm: string;
+}
+
+export interface RequisicaoCreate {
+  aeronaveId: number;
+  tipoOperacao: TipoOperacao;
+  prioridade: PrioridadeRequisicao;
+  observacao: string;
 }
